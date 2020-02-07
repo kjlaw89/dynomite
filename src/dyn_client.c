@@ -99,6 +99,7 @@ static void client_unref_internal_try_put(struct conn *conn) {
   dictRelease(conn->outstanding_msgs_dict);
   conn->outstanding_msgs_dict = NULL;
   conn->waiting_to_unref = 0;
+  free(conn->pname.data);
   conn_put(conn);
 }
 
